@@ -1,0 +1,49 @@
+body {
+    padding: 16px;
+}
+
+.table{
+  width: 100%;
+  height: 60%;
+  margin: auto;
+  text-align: center;
+}
+td {
+  padding: 0 0 0 10px;
+  border: 1px solid darkgrey;
+  width: 100px;
+}
+
+input {
+  width: 30%;
+}
+th {
+  background-color: lightgrey;
+  border: 1px solid darkgrey;
+  text-align: left;
+  padding: 10px 0 10px 10px;
+  width: 100px;
+}
+
+
+.headerText {
+    font-size: 30px;
+}
+
+.rectangle{
+  padding: 0 0 0 10px;
+}
+
+.rectangle-button{
+    margin-left: 5px;
+}
+
+.rectangle-shape{
+    position: relative;
+    left: 900px;
+}
+ul {
+  margin-top: 20px;
+  margin-left: 420px;
+  
+}

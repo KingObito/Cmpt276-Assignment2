@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%- include ("../partials/header.ejs") %>
+</head>
+<link rel="stylesheet" href="/stylesheets/style.css">
+
+<body>
+
+<%- include ("../partials/nav.ejs") %>
+
+<div class="container">
+<h2>Rectangle Results</h2>
+    
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Color</th>
+      <th>Width</th>
+      <th>Height</th>
+    </tr>
+  </thead>
+  <% rows.forEach(function(r) { %>
+  <body>
+    <tr>
+    <td><%= r.uid %></td>
+    <td><a href="/EditNdDelete/<%= r.uid %>"><u><%= r.rectanglename %></u></a></td>
+    <td><%= r.color %></td>
+      <td><%= r.width %></td>
+      <td><%= r.height %></td>
+    </tr>
+  </body>
+  <% }); %>
+</table>
+</div>
+
+<div id="button-new">
+  <!-- Trigger the modal with a button -->
+  <ul>
+    <button type="button"  data-toggle="modal" data-target="#modal">New Rectangle</button>
+    <button type="button"  data-toggle="modal" data-target="#edit">Edit Rectangle</button>
+    <button type="button"  data-toggle="modal" data-target="#delete">Delete Rectangle</button>
+  </ul>
+  
+
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal modal-content-->
+    <div class="modal-content">
+      <div class="header">
+
+        <h4 class="title">New Rectangle</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="/create">
+          <div class="info">
+            <label>Name</label>
+            <input type="text" class="form-name" id="name" name="name">
+          </div>
+          <div class="info">
+            <label>Color</label>
+            <!-- <input type="color" id="color" value="#FF0000"> -->
+            <select class="form-selection-small" aria-label=".form-select-sm example" id="color" name="color">
+              <option selected value>Choose a color</option>
+              <option value="red">Red</option>
+              <option value="orange">Orange</option>
+              <option value="yellow">Yellow</option>
+              <option value="green">Green</option>
+              <option value="blue">Blue</option>
+              <option value="indigo">Indigo</option>
+              <option value="violet">Violet</option>
+              <option value="black">Black</option>
+            </select>
+
+          </div>
+          <div class="info">
+            <label>Height</label>
+            <input type="number" class="form-control" id="height" name="height">
+          </div>
+          <div class="info">
+            <label>Width</label>
+            <input type="number" class="form-control" id="width" name="width">
+          </div>
+          <div class="footer">
+
+            <button type="submit" class="btn btn-success">Create</button>
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Edit Modal -->
+ <div class="modal fade" id="edit" role="dialog">
+   <div class="modal-dialog">
+   <!-- Modal modal-content -->
+     <div class="modal-content">
+       <div class="header">
+         <h5 class="title">Edit Rectangle</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+         <form method="post" action="/edit">
+          <div class="info">
+            <label>Edit Row</label>
+            <input type="number" class="form-control" id="uid" name="uid">
+          </div>
+           <div class="info">
+             <label for="name">Name</label>
+             <input type="text" class="form-control" id="name" name="name" >
+           </div>
+           <div class="info">
+             <label>Color</label>
+             <!-- <input type="color" id="color" value="#FF0000"> -->
+             <select class="form-selection-small" aria-label=".form-select-sm example" id="color" name="color">
+               <option selected value>Choose a color</option>
+               <option value="red">Red</option>
+               <option value="orange">Orange</option>
+               <option value="yellow">Yellow</option>
+               <option value="green">Green</option>
+               <option value="blue">Blue</option>
+               <option value="indigo">Indigo</option>
+               <option value="violet">Violet</option>
+               <option value="black">Black</option>
+             </select>
+
+           </div>
+           <div class="info">
+             <label>Height</label>
+             <input type="number" class="form-control" id="height" name="height">
+           </div>
+           <div class="info">
+             <label>Width</label>
+             <input type="number" class="form-control" id="width" name="width">
+           </div>
+          
+           <div class="footer">
+
+             <button type="submit" class="btn btn-info">Edit</button>
+             <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+           </div>
+
+         </form>
+       </div>
+     </div>
+   </div>
+ </div>
+
+ <!-- Delete Modal -->
+ <div class="modal fade" id="delete" role="dialog">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="header">
+         <h5 class="title">Delete Rectangle</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+      <form method="post" action="/delete/">
+        <div class="info">
+          <label>Delete Row</label>
+          <input type="number" class="form-control" id="uid" name="uid">
+        </div>
+       
+       <div class="footer">
+        <button type="submit" class="btn btn-danger">Delete</button> 
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+        
+       </div>
+      </form>
+     </div>
+   </div>
+ </div>
+
+</body>
+</html>
